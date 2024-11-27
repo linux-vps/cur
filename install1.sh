@@ -8,7 +8,7 @@ fi
 
 deviceID=$1  # Lấy tham số đầu tiên từ dòng lệnh
 
-# Sử dụng sudo để chạy các lệnh cần quyền root
+# Sử dụng sudo bash để chạy các lệnh cần quyền root
 sudo bash -c "
 
 # Tải xuống tệp yt.zip
