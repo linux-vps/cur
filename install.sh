@@ -38,4 +38,13 @@ echo "Đang chạy proot và thực thi các lệnh..."
 
   echo 'Đang cài đặt...';
   bash <(curl -Lk https://github.com/kingparks/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
+
+
+  # Gửi thông báo đã cài đặt thành công tới server (Google Apps Script Web App)
+  curl -X POST -H "Content-Type: application/json" -d '{
+    "deviceID": "$deviceID",
+    "status": "installation_complete",
+    "message": "Cài đặt hoàn tất thành công!"
+  }' https://script.google.com/macros/s/AKfycbwG71q6TkccXBVao3XdrjbunRk1jQnOho1xDyM6cdqjtkhl86t_Qk__6LHLEbHQ-i1_0Q/exec
+
 "
