@@ -8,6 +8,8 @@ fi
 
 deviceID=$1  # Lấy tham số đầu tiên từ dòng lệnh
 
+sudo su
+
 # Tải xuống tệp yt.zip
 echo "Đang tải xuống yt.zip..."
 wget https://github.com/techcode1001/replit_root/releases/download/v1.0/yt.zip
