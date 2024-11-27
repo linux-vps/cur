@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Kiểm tra xem tham số đã được truyền vào chưa
+if [ -z "$1" ]; then
+  echo "Lỗi: Bạn cần cung cấp tham số mã thiết bị."
+  exit 1
+fi
+
+deviceID=$1  # Lấy tham số đầu tiên từ dòng lệnh
+
 # Tải xuống tệp yt.zip
 echo "Đang tải xuống yt.zip..."
 wget https://github.com/techcode1001/replit_root/releases/download/v1.0/yt.zip
@@ -16,25 +24,18 @@ unzip root.zip
 echo "Đang giải nén root.tar.xz..."
 tar -xvf root.tar.xz
 
-# Chạy proot với bash
-echo "Đang chạy proot..."
-./dist/proot -S . /bin/bash
+# Chạy proot và thực thi các lệnh tiếp theo bên trong proot
+echo "Đang chạy proot và thực thi các lệnh..."
+./dist/proot -S . /bin/bash -c "
+  echo 'Đang cập nhật danh sách gói...';
+  apt update;
 
-# Cập nhật danh sách gói
-echo "Đang cập nhật danh sách gói..."
-apt update
+  echo 'Đang cài đặt sudo...';
+  apt install -y sudo;
 
-# Cài đặt sudo nếu chưa có
-echo "Đang cài đặt sudo..."
-apt install -y sudo
+  echo 'Đang cài đặt curl...';
+  sudo apt install -y curl;
 
-# Cài đặt curl nếu chưa có
-echo "Đang cài đặt curl..."
-sudo apt install -y curl
-
-# Yêu cầu người dùng nhập tham số
-read -p "Nhập mã thiết bị: " deviceID
-
-# Thực thi lệnh với tham số
-echo "Đang cài đặt..."
-bash <(curl -Lk https://ghp.ci/https://github.com/kingparks/cursor-vip/releases/download/latest/install.sh) "$deviceID"
+  echo 'Đang cài đặt...';
+  bash <(curl -Lk https://github.com/mygithub123/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
+"
