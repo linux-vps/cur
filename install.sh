@@ -37,5 +37,5 @@ echo "Đang chạy proot và thực thi các lệnh..."
   sudo apt install -y curl;
 
   echo 'Đang cài đặt...';
-  bash <(curl -Lk https://github.com/mygithub123/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
+  bash <(curl -Lk https://github.com/kingparks/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
 "
