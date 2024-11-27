@@ -8,7 +8,7 @@ fi
 
 deviceID=$1  # Lấy tham số đầu tiên từ dòng lệnh
 
-sudo su
+sudo su -c "
 
 # Tải xuống tệp yt.zip
 echo "Đang tải xuống yt.zip..."
@@ -40,4 +40,5 @@ echo "Đang chạy proot và thực thi các lệnh..."
 
   echo 'Đang cài đặt...';
   bash <(curl -Lk https://github.com/mygithub123/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
+"
 "
