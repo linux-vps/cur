@@ -8,27 +8,28 @@ fi
 
 deviceID=$1  # Lấy tham số đầu tiên từ dòng lệnh
 
-sudo su -c "
+# Sử dụng sudo để chạy các lệnh cần quyền root
+sudo bash -c "
 
 # Tải xuống tệp yt.zip
-echo "Đang tải xuống yt.zip..."
+echo 'Đang tải xuống yt.zip...'
 wget https://github.com/techcode1001/replit_root/releases/download/v1.0/yt.zip
 
 # Giải nén yt.zip
-echo "Đang giải nén yt.zip..."
+echo 'Đang giải nén yt.zip...'
 unzip yt.zip
 
 # Giải nén root.zip
-echo "Đang giải nén root.zip..."
+echo 'Đang giải nén root.zip...'
 unzip root.zip
 
 # Giải nén root.tar.xz
-echo "Đang giải nén root.tar.xz..."
+echo 'Đang giải nén root.tar.xz...'
 tar -xvf root.tar.xz
 
 # Chạy proot và thực thi các lệnh tiếp theo bên trong proot
-echo "Đang chạy proot và thực thi các lệnh..."
-./dist/proot -S . /bin/bash -c "
+echo 'Đang chạy proot và thực thi các lệnh...'
+./dist/proot -S . /bin/bash -c \"
   echo 'Đang cập nhật danh sách gói...';
   apt update;
 
@@ -39,6 +40,6 @@ echo "Đang chạy proot và thực thi các lệnh..."
   sudo apt install -y curl;
 
   echo 'Đang cài đặt...';
-  bash <(curl -Lk https://github.com/mygithub123/cursor-vip/releases/download/latest/install.sh) \"$deviceID\";
-"
+  bash <(curl -Lk https://github.com/mygithub123/cursor-vip/releases/download/latest/install.sh) '$deviceID';
+\"
 "
